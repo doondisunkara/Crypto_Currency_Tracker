@@ -1,0 +1,21 @@
+.crypto-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px 10px 20px;
+}
+
+.currency-logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+}
+
+.item-type {
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 24px;
+  font-weight: 500;
+  text-align: left;
+  margin: 0;
+  width: 60%;
+}
