@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import Loader from 'react-loader-spinner'
 
 import CryptocurrencyItem from '../CryptocurrencyItem'
 import './index.css'
@@ -6,6 +7,7 @@ import './index.css'
 class CryptocurrencyList extends Component {
   state = {
     cryptoCurrencyList: [],
+    isLoading: true,
   }
 
   componentDidMount() {
@@ -26,11 +28,18 @@ class CryptocurrencyList extends Component {
     }))
 
     console.log(updatedData)
-    this.setState({cryptoCurrencyList: updatedData})
+    this.setState({cryptoCurrencyList: updatedData, isLoading: false})
   }
 
-  render() {
-    const {cryptoCurrencyList} = this.state
+  renderCryptoApp = () => {
+    const {cryptoCurrencyList, isLoading} = this.state
+    if (isLoading) {
+      return (
+        <div data-testid="loader">
+          <Loader type="Rings" color="#ffffff" height={80} width={80} />
+        </div>
+      )
+    }
     return (
       <div className="crypto-container">
         <h1 className="main-heading">Cryptocurrency Tracker</h1>
@@ -51,6 +60,10 @@ class CryptocurrencyList extends Component {
         </ul>
       </div>
     )
+  }
+
+  render() {
+    return this.renderCryptoApp()
   }
 }
 export default CryptocurrencyList
